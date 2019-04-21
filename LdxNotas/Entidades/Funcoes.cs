@@ -24,5 +24,16 @@ namespace LdxNotas.Entidades {
 
             return hashValue.ToString();
         }
+
+        public bool IsNumeric(string codUsuario) {
+            bool isnumeric = false;
+            char[] datachars = codUsuario.ToCharArray();
+
+            foreach (var datachar in datachars)
+                isnumeric = isnumeric ? char.IsDigit(datachar) : isnumeric;
+
+
+            return isnumeric;
+        }
     }
 }

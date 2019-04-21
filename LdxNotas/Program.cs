@@ -14,22 +14,36 @@ namespace LdxNotas {
 
             SqlCeConnection conexao = new SqlCeConnection();
             conexao.ConnectionString = @"Data Source=C:\csharp\LDXNOTAS\LdxNotas\landix.sdf;Password=landix";
-            conexao.Open();          
-            SqlCeDataAdapter adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TUSUARIOS WHERE CDUSU in ('s');",conexao);
-            DataTable dados = new DataTable();
-            adaptador.Fill(dados);
+            conexao.Open();
 
-            string a = dados.Rows[0][0].ToString();
-            Console.WriteLine(a);
+            Console.WriteLine("COD: ");
+            string cod = Console.ReadLine();
+            Console.WriteLine("NOME: ");
+            string nome = Console.ReadLine();
+            Console.WriteLine("LOGIN: ");
+            string login = Console.ReadLine();
+            Console.WriteLine("SENHA: ");
+            string senha = Console.ReadLine();
+
+            SqlCeDataAdapter adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TUSUARIOS WHERE CDUSU in ('{cod}');",conexao);
+            DataTable dados = new DataTable();
+            adaptador.Fill(dados);          
+            int a = int.Parse(dados.Rows[0][0].ToString());
+
+            if (a != 0) {
+                Console.WriteLine($"Já existe o código {cod}");
+            } else {
+                TUSUARIOS usu = new TUSUARIOS(cod, nome, login, senha);
+                string query= "INSERT INTO TUSUARIOS VALUES ('"+cod+"','"+nome+"','"+login+"','"+senha+"');";              
+                SqlCeCommand operaio = new SqlCeCommand(query,conexao);
+                operaio.ExecuteNonQuery();
+            }
+
+
             conexao.Close();
             
 
-            Funcoes f = new Funcoes();
-            string senha1 = "123456";
-            string senha2 = "1234567891113151719";
-
-            Console.WriteLine(f.Criptografa(senha1));
-            Console.WriteLine(f.Criptografa(senha2).Length);
+            
 
             
 
