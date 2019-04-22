@@ -16,15 +16,8 @@ namespace LdxNotas.Entidades {
 
         public TUSUARIOS() {
         }
-        public TUSUARIOS(string codUsuario, string nomUsuario, string logUsuario, string senUsuario) {
-            if (codUsuario.Length > 36) {
-                throw new DomainException("Erro no cadastro do usuários - O código do usuário tem mais do que 36 caracteres!");
-            } else if (f.IsNumeric(codUsuario)) {
-                throw new DomainException("Erro no cadastro do usuários - O código do usuário contém caracters não numéricos!");
-            } else {
-                this.codUsuario = codUsuario;
-            }
-
+        public TUSUARIOS(string nomUsuario, string logUsuario, string senUsuario) {
+            
             if (nomUsuario.Length > 50) {
                 throw new DomainException("Erro no cadastro de usuários - O nome do usuário contém mais do que 50 caracteres!");
             } else if (f.IsNumeric(nomUsuario)) {
@@ -46,6 +39,10 @@ namespace LdxNotas.Entidades {
             } else {
                 this.senUsuario = f.Criptografa(senUsuario);
             }
+            Guid g;
+            g = Guid.NewGuid();
+            codUsuario = g.ToString(); 
+
         }
 
 
