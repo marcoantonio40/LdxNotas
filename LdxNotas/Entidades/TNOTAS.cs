@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using LdxNotas.Entidades.Excecoes;
 
 namespace LdxNotas.Entidades {
@@ -9,12 +10,10 @@ namespace LdxNotas.Entidades {
 
         public TNOTAS() { }
 
-        public TNOTAS(string codNota, string codUsuario, string titNota, string desNota, DateTime dtAlter) {
-            if (!f.IsNumeric(codNota)) {
-                throw new DomainException("Código da nota inválido");
-            } else {
-                this.codNota = codNota;
-            }
+        public TNOTAS(string codUsuario, string titNota, string desNota, DateTime dtAlter) {
+
+            this.codNota = UltCodNota();
+            
             
             this.codUsuario = codUsuario;
             if (titNota.Length > 50) {
@@ -30,6 +29,26 @@ namespace LdxNotas.Entidades {
             }
             
             this.dtAlter = dtAlter;
+        }
+
+
+        public string UltCodNota() {
+            string ultCodNota = "";
+            try {
+                string caminho = @"C:\csharp\LDXNOTAS\LdxNotas\codNota.txt";
+            
+                ultCodNota = File.ReadAllText(caminho);
+                int novCod = int.Parse(ultCodNota)+1;
+                File.WriteAllText(caminho, novCod.ToString());
+                
+
+            } catch (IOException e) {
+                Console.WriteLine(e.Message);
+
+            }
+
+            return ultCodNota;
+
         }
     }
 }

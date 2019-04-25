@@ -11,11 +11,13 @@ using LdxNotas.Entidades;
 namespace LdxNotas {
     class Program {
         static void Main(string[] args) {
+         
             try {
                 Funcoes f = new Funcoes();
                 SqlCeConnection conexao = new SqlCeConnection();
                 conexao.ConnectionString = @"Data Source=C:\csharp\LDXNOTAS\LdxNotas\landix.sdf;Password=landix";
                 conexao.Open();
+  
 
                 //Tela de Login
                 Console.WriteLine("------------LDXNOTAS--------------");
@@ -91,14 +93,10 @@ namespace LdxNotas {
                         Console.Write("Descrição da Nota:");
                         string desc = Console.ReadLine();
 
-                        adaptador = new SqlCeDataAdapter($"SELECT MAX(CDNOTA) FROM TNOTAS; ", conexao);
-                        dados.Clear();
-                        adaptador.Fill(dados);
-                        int cdnota = 0;
-                        cdnota = ((int)dados.Rows[0][2])+1;
+                        
 
 
-                        TNOTAS t = new TNOTAS(cdnota.ToString(),codigo,tit,desc,DateTime.Now);
+                        TNOTAS t = new TNOTAS(codigo,tit,desc,DateTime.Now);
 
 
                     }
