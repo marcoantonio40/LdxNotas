@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LdxNotas.Entidades.Excecoes;
 
-namespace LdxNotas.Entidades {
-    class TUSUARIOS {
 
+
+namespace LdxNotas.Entidades {
+
+    
+    class TUSUARIOS {
+        
         public Funcoes f = new Funcoes();
         public string codUsuario { get; set; }
         public string nomUsuario { get; set; }

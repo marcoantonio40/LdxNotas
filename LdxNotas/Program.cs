@@ -11,7 +11,7 @@ using LdxNotas.Entidades;
 namespace LdxNotas {
     class Program {
         static void Main(string[] args) {
-            //try {
+            try {
                 Funcoes f = new Funcoes();
                 SqlCeConnection conexao = new SqlCeConnection();
                 conexao.ConnectionString = @"Data Source=C:\csharp\LDXNOTAS\LdxNotas\landix.sdf;Password=landix";
@@ -23,28 +23,33 @@ namespace LdxNotas {
                 string login = Console.ReadLine();
                 Console.Write("SENHA: ");
                 string senha = Console.ReadLine();
-                Console.Write("CÓDIGO: ");
-
-
+                Console.WriteLine("");
 
 
                 //Valida login
-                SqlCeDataAdapter adaptador = new SqlCeDataAdapter($"SELECT DSNOME FROM TUSUARIOS " +
+
+                SqlCeDataAdapter adaptador = new SqlCeDataAdapter($"SELECT DSNOME,CDUSU FROM TUSUARIOS " +
                     $"WHERE DSLOGIN='{login}' AND DSSENH='{f.Criptografa(senha)}';", conexao);
                 DataTable dados = new DataTable();
-                adaptador.Fill(dados);
+            dados.Clear();
+            adaptador.Fill(dados);
                 string nome = null;
+                string codigo = null;
                 nome = dados.Rows[0][0].ToString();
+                codigo = dados.Rows[0][1].ToString();//código do usuário
 
+               
                 if (nome is null) {
                     Console.WriteLine("Login Inválido!");
                 } else {
                     Console.WriteLine("Bem vindo, " + nome);
                     Console.WriteLine("Escolha a opção:");
                     Console.WriteLine("1 - Cadastrar Usuários");
+                    Console.WriteLine("2 - Cadastrar Nota");
                     int opcao = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
 
+                    //=======================================CADASTRA USUÁRIO=======================================
                     if (opcao == 1) {
                         Console.Write("NOME: ");
                         nome = Console.ReadLine();
@@ -57,8 +62,8 @@ namespace LdxNotas {
                     adaptador.Fill(dados);
                         
                         int existe = 0;
-                        existe = int.Parse(dados.Rows[0][1].ToString());
-                    
+                        existe = int.Parse(dados.Rows[0][2].ToString());
+                        
                         if (existe == 0) {
                         
                             Console.Write("SENHA: ");
@@ -77,47 +82,35 @@ namespace LdxNotas {
 
 
                     }
+                    //=======================================CADASTRA =======================================
+                    else if (opcao==2) {
+                        Console.WriteLine("");
+                        Console.WriteLine("===============Cadastre a nota:==============");
+                        Console.Write("Título da Nota:");
+                        string tit = Console.ReadLine();
+                        Console.Write("Descrição da Nota:");
+                        string desc = Console.ReadLine();
+
+                        adaptador = new SqlCeDataAdapter($"SELECT MAX(CDNOTA) FROM TNOTAS; ", conexao);
+                        dados.Clear();
+                        adaptador.Fill(dados);
+                        int cdnota = 0;
+                        cdnota = ((int)dados.Rows[0][2])+1;
+
+
+                        TNOTAS t = new TNOTAS(cdnota.ToString(),codigo,tit,desc,DateTime.Now);
+
+
+                    }
 
                 }
                 conexao.Close();
-            //} catch(Exception e) {
-            //    Console.WriteLine(e.Message);
-            //    }
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
 
         }
 
 
-
-
-
-        //SqlCeDataAdapter adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TUSUARIOS WHERE CDUSU in ('{cod}');",conexao);
-        //DataTable dados = new DataTable();
-        //adaptador.Fill(dados);          
-        //int a = int.Parse(dados.Rows[0][0].ToString());
-
-        //if (a != 0) {
-        //    Console.WriteLine($"Já existe o código {cod}");
-        //} else {
-        //    TUSUARIOS usu = new TUSUARIOS(cod, nome, login, senha);
-        //    string query= "INSERT INTO TUSUARIOS VALUES ('"+cod+"','"+nome+"','"+login+"','"+senha+"');";              
-        //    SqlCeCommand operaio = new SqlCeCommand(query,conexao);
-        //    operaio.ExecuteNonQuery();
-        //}
-
-
-        
-            
-
-            
-
-            
-
-
-
-
-
-
-            
-        
-    }
+        }
 }
