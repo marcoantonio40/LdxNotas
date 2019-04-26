@@ -6,13 +6,13 @@ namespace LdxNotas.Entidades {
     class TNOTAS {
 
         public Funcoes f = new Funcoes();
-        public string codNota { get; set; }        public string codUsuario { get; set; }        public string titNota { get; set; }        public string desNota { get; set; }        public DateTime dtAlter { get; set; }
+        public string codNota { get; set; }        public string codUsuario { get; set; }        public string titNota { get; set; }        public string desNota { get; set; }        public string data { get; set; }        private DateTime dtAlter;
 
         public TNOTAS() { }
 
-        public TNOTAS(string codUsuario, string titNota, string desNota, DateTime dtAlter) {
+        public TNOTAS(string codUsuario, string titNota, string desNota) {
 
-            this.codNota = UltCodNota();
+            codNota = UltCodNota();
             
             
             this.codUsuario = codUsuario;
@@ -27,8 +27,12 @@ namespace LdxNotas.Entidades {
             } else {
                 this.desNota = desNota;
             }
+
+            dtAlter = DateTime.Now;
+            string sqlFormattedDate = dtAlter.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            data = sqlFormattedDate;
             
-            this.dtAlter = dtAlter;
+            
         }
 
 
