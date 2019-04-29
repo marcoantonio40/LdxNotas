@@ -12,11 +12,14 @@ namespace LdxNotas {
     class Program {
         static void Main(string[] args) {
 
-            //try {
-            string query;
-            int seq = 0;
+            try {
+            string query,tit,desc,data, cdnota;
+            int seq = 0,editar,existe;
             Funcoes f = new Funcoes();
-            SqlCeCommand operaio = new SqlCeCommand();
+            TUSUARIOS usu;
+            TNOTAS t;
+
+            SqlCeCommand operario = new SqlCeCommand();
             SqlCeConnection conexao = new SqlCeConnection();
             conexao.ConnectionString = @"Data Source=C:\csharp\LDXNOTAS\LdxNotas\landix.sdf;Password=landix";
             conexao.Open();
@@ -48,15 +51,18 @@ namespace LdxNotas {
             if (nome is null) {
                 Console.WriteLine("Login Inválido!");
             } else {
-                Console.WriteLine("Bem vindo, " + nome);
-                Console.WriteLine("Escolha a opção:");
-                Console.WriteLine("0 - Sair:");
-                Console.WriteLine("1 - Cadastrar Usuários");
-                Console.WriteLine("2 - Cadastrar Nota");
-                int opcao = int.Parse(Console.ReadLine());
-                Console.WriteLine("");
+                int opcao;
                 do {
                     //=======================================CADASTRA USUÁRIO=======================================
+                    Console.WriteLine("Escolha a opção:");
+                    Console.WriteLine("0 - Sair:");
+                    Console.WriteLine("1 - Cadastrar Usuário");
+                    Console.WriteLine("2 - Cadastrar Nota");
+                    Console.WriteLine("3 - Visualizar Notas");
+                    Console.WriteLine("4 - Editar Nota");
+
+                    opcao = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
                     if (opcao == 1) {
                         Console.Write("NOME: ");
                         nome = Console.ReadLine();
@@ -68,7 +74,7 @@ namespace LdxNotas {
                         dados.Clear();
                         adaptador.Fill(dados);
 
-                        int existe = 0;
+                        existe = 0;
                         existe = int.Parse(dados.Rows[0][seq].ToString());
                         seq++;
                         if (existe == 0) {
@@ -76,11 +82,11 @@ namespace LdxNotas {
                             Console.Write("SENHA: ");
                             senha = Console.ReadLine();
 
-                            TUSUARIOS usu = new TUSUARIOS(nome, login, senha);
+                            usu = new TUSUARIOS(nome, login, senha);
                             query = "INSERT INTO TUSUARIOS VALUES ('" + usu.codUsuario +
                                 "','" + usu.nomUsuario + "','" + usu.logUsuario + "','" + usu.senUsuario + "');";
-                            operaio = new SqlCeCommand(query, conexao);
-                            operaio.ExecuteNonQuery();
+                            operario = new SqlCeCommand(query, conexao);
+                            operario.ExecuteNonQuery();
 
 
                         } else {
@@ -94,25 +100,89 @@ namespace LdxNotas {
                         Console.WriteLine("");
                         Console.WriteLine("===============Cadastre a nota:==============");
                         Console.Write("Título da Nota: ");
-                        string tit = Console.ReadLine();
+                        tit = Console.ReadLine();
                         Console.Write("Descrição da Nota: ");
-                        string desc = Console.ReadLine();
+                        desc = Console.ReadLine();
 
-                        TNOTAS t = new TNOTAS(codigo, tit, desc);
+                        t = new TNOTAS(codigo, tit, desc);
                         query = "INSERT INTO TNOTAS VALUES ('" + t.codNota + "','" + t.codUsuario + "','" + t.titNota + "','" + t.desNota + "','" + t.data + "');";
-                        operaio = new SqlCeCommand(query, conexao);
-                        operaio.ExecuteNonQuery();
+                        operario = new SqlCeCommand(query, conexao);
+                        operario.ExecuteNonQuery();
+                    }//=======================================VISUALIZA NOTAS =======================================
+                    else if (opcao == 3) {
+                        adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TNOTAS WHERE CDUSU='{codigo}';", conexao);
+                        dados.Clear();
+                        adaptador.Fill(dados);
+                        int linhas = int.Parse(dados.Rows[0][seq].ToString());
+                        seq++;
+
+                        adaptador = new SqlCeDataAdapter($"SELECT CDNOTA,DSTITU,DSNOTA,DTNOTA FROM TNOTAS WHERE CDUSU='{codigo}'",conexao);
+                        dados.Clear();
+                        adaptador.Fill(dados);
                         
+                        for(int i = 0; i < linhas; i++) {
+                            cdnota = dados.Rows[i][seq].ToString();
+                            seq++;
+                            tit = dados.Rows[i][seq].ToString();
+                            seq++;
+                            desc = dados.Rows[i][seq].ToString();
+                            seq++;
+                            data = dados.Rows[i][seq].ToString();
+                            seq++;
+                            Console.WriteLine($"--------------NOTA {cdnota} --------------");
+                            Console.WriteLine($"TÍTULO: {tit}");
+                            Console.WriteLine($"DESCRIÇÃO: {desc}");
+                            Console.WriteLine($"DATA DE ALTERAÇÃO: {data}");
+                            Console.WriteLine("-------------------------------------");
+                            seq -= 4;
+                        }   
+                    }
+                    //=======================================EDITAR NOTA =======================================
+                    else if (opcao == 4) {
+                        Console.WriteLine("Editar qual nota");
+                        cdnota = Console.ReadLine();
+                        Console.WriteLine("1 - Título");
+                        Console.WriteLine("2 - Descrição");
+                        editar = int.Parse(Console.ReadLine());
+
+                        adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TNOTAS WHERE CDNOTA='{cdnota}';", conexao);
+                        dados.Clear();
+                        adaptador.Fill(dados);
+                        existe = int.Parse(dados.Rows[0][seq].ToString());
+                        seq++;
+
+                        if (existe == 0) {
+                            Console.WriteLine("Nota não existe!");
+                        } else {
+                            if (editar == 1) {
+                                Console.WriteLine("Novo título: ");
+                                tit = Console.ReadLine();
+                                TNOTAS t1 = new TNOTAS();
+                                query = "UPDATE TNOTAS SET DSTITU='" + tit + "',DTNOTA='" + t1.DataTexto() + "' WHERE CDNOTA='" + cdnota + "';";
+                                operario = new SqlCeCommand(query, conexao);
+                                operario.ExecuteNonQuery();
+
+                            }else if (editar == 2) {
+                                Console.WriteLine("Nova descrição: ");
+                                desc = Console.ReadLine();
+                                TNOTAS t1 = new TNOTAS();
+                                query = "UPDATE TNOTAS SET DSNOTA='" + desc + "',DTNOTA='" + t1.DataTexto() + "' WHERE CDNOTA='" + cdnota + "';";
+                                operario = new SqlCeCommand(query, conexao);
+                                operario.ExecuteNonQuery();
+                            }
+                        }
+
 
                     }
+
 
                 } while (opcao != 0);
             }
             conexao.Close();
 
-            //    } catch (Exception e) {
-            //    Console.WriteLine(e.Message);
-            //}
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
 
         }
 

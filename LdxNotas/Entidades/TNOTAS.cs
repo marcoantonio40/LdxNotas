@@ -28,13 +28,18 @@ namespace LdxNotas.Entidades {
                 this.desNota = desNota;
             }
 
-            dtAlter = DateTime.Now;
-            string sqlFormattedDate = dtAlter.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            data = sqlFormattedDate;
+            data = this.DataTexto();
+
             
             
         }
 
+        public string DataTexto() {
+            dtAlter = DateTime.Now;
+            string sqlFormattedDate = dtAlter.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            data = sqlFormattedDate;
+            return data;
+        }
 
         public string UltCodNota() {
             string ultCodNota = "";
