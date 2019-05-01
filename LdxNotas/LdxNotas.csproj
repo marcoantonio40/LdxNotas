@@ -63,9 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Excecoes\DomainException.cs" />
-    <Compile Include="Entidades\Funcoes.cs" />
-    <Compile Include="Entidades\TNOTAS.cs" />
-    <Compile Include="Entidades\TUSUARIOS.cs" />
+    <Compile Include="Entidades\Usuarios.cs" />
+    <Compile Include="Functions\Banco.cs" />
+    <Compile Include="Functions\Funcoes.cs" />
+    <Compile Include="Entidades\Notas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

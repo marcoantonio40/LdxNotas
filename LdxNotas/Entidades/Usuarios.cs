@@ -1,23 +1,24 @@
 ﻿using System;
 using LdxNotas.Entidades.Excecoes;
+using LdxNotas.Functions;
 
 
 
 namespace LdxNotas.Entidades {
 
-    
-    class TUSUARIOS {
-        
+
+    class Usuarios {
+
         public Funcoes f = new Funcoes();
         public string codUsuario { get; set; }
         public string nomUsuario { get; set; }
         public string logUsuario { get; set; }
         public string senUsuario { get; set; }
 
-        public TUSUARIOS() {
+        public Usuarios() {
         }
-        public TUSUARIOS(string nomUsuario, string logUsuario, string senUsuario) {
-            
+        public Usuarios(string nomUsuario, string logUsuario, string senUsuario) {
+
             if (nomUsuario.Length > 50) {
                 throw new DomainException("Erro no cadastro de usuários - O nome do usuário contém mais do que 50 caracteres!");
             } else if (f.IsNumeric(nomUsuario)) {
@@ -41,7 +42,7 @@ namespace LdxNotas.Entidades {
             }
             Guid g;
             g = Guid.NewGuid();
-            codUsuario = g.ToString(); 
+            codUsuario = g.ToString();
 
         }
 

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LdxNotas.Entidades {
+namespace LdxNotas.Functions {
     class Funcoes {
 
         public Funcoes() { }

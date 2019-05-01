@@ -1,18 +1,19 @@
 ﻿using System;
 using System.IO;
 using LdxNotas.Entidades.Excecoes;
-
+using LdxNotas.Functions;
 namespace LdxNotas.Entidades {
-    class TNOTAS {
+    class Notas {
 
         public Funcoes f = new Funcoes();
         public string codNota { get; set; }        public string codUsuario { get; set; }        public string titNota { get; set; }        public string desNota { get; set; }        public string data { get; set; }        private DateTime dtAlter;
+        Banco banco = new Banco();
 
-        public TNOTAS() { }
+        public Notas() { }
 
-        public TNOTAS(string codUsuario, string titNota, string desNota) {
+        public Notas(string codUsuario, string titNota, string desNota) {
 
-            codNota = UltCodNota();
+            codNota = banco.PegaUltimoCodigoNota();
             
             
             this.codUsuario = codUsuario;
@@ -41,23 +42,23 @@ namespace LdxNotas.Entidades {
             return data;
         }
 
-        public string UltCodNota() {
-            string ultCodNota = "";
-            try {
-                string caminho = @"C:\csharp\LDXNOTAS\LdxNotas\codNota.txt";
+        //public string UltCodNota() {
+        //    string ultCodNota = "";
+        //    try {
+        //        string caminho = @"C:\csharp\LDXNOTAS\LdxNotas\codNota.txt";
             
-                ultCodNota = File.ReadAllText(caminho);
-                int novCod = int.Parse(ultCodNota)+1;
-                File.WriteAllText(caminho, novCod.ToString());
+        //        ultCodNota = File.ReadAllText(caminho);
+        //        int novCod = int.Parse(ultCodNota)+1;
+        //        File.WriteAllText(caminho, novCod.ToString());
                 
 
-            } catch (IOException e) {
-                Console.WriteLine(e.Message);
+        //    } catch (IOException e) {
+        //        Console.WriteLine(e.Message);
 
-            }
+        //    }
 
-            return ultCodNota;
+        //    return ultCodNota;
 
-        }
+        //}
     }
 }
