@@ -2,8 +2,6 @@
 using LdxNotas.Entidades.Excecoes;
 using LdxNotas.Functions;
 
-
-
 namespace LdxNotas.Entidades {
 
 
@@ -45,10 +43,6 @@ namespace LdxNotas.Entidades {
             codUsuario = g.ToString();
 
         }
-
-
-
-
 
     }
 }

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlServerCe;
+﻿using System.Data.SqlServerCe;
 using System.Data;
-
+using LdxNotas.Entidades;
+using LdxNotas.Entidades.Excecoes;
 
 namespace LdxNotas.Functions {
     class Banco {
         Funcoes funcao = new Funcoes();
         SqlCeDataAdapter adaptador;
+        SqlCeCommand operario;
         int existe;
 
         public SqlCeConnection ConectarBanco() {
@@ -46,18 +43,18 @@ namespace LdxNotas.Functions {
 
         }
 
-        public bool VerificaSeLoginUsuarioExiste(string login,SqlCeConnection conexao) {
+        public bool VerificaSeLoginUsuarioExiste(string login, SqlCeConnection conexao) {
             adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TUSUARIOS WHERE DSLOGIN='{login}';", conexao);
             DataTable dados = new DataTable();
             adaptador.Fill(dados);
-            existe=int.Parse(dados.Rows[0][0].ToString());
+            existe = int.Parse(dados.Rows[0][0].ToString());
 
             if (existe == 0) {
                 return true;
             } else {
                 return false;
             }
-            
+
         }
 
         public string PegaUltimoCodigoNota() {
@@ -67,5 +64,63 @@ namespace LdxNotas.Functions {
 
             return dados.Rows[0][0].ToString();
         }
+
+        public void InsereUsuariosBanco(Usuarios usuario) {
+            string query = $"INSERT INTO TUSUARIOS VALUES ('{usuario.codUsuario}'" +
+                $",'{usuario.nomUsuario}','{usuario.logUsuario}','{usuario.senUsuario}');";
+            operario = new SqlCeCommand(query, this.ConectarBanco());
+            operario.ExecuteNonQuery();
+
+        }
+
+        public void InsereNotasBanco(Notas nota) {
+            string query = $"INSERT INTO TNOTAS VALUES ('{nota.codigoNota}','{nota.codigoUsuario}'," +
+                $"'{nota.tituloNota}','{nota.descricaoNota}','{nota.dataNota}');";
+            operario = new SqlCeCommand(query, this.ConectarBanco());
+            operario.ExecuteNonQuery();
+        }
+
+        public DataTable ObterNotas(string codigoUsuario) {
+            adaptador = new SqlCeDataAdapter($"SELECT CDNOTA,DSTITU,DSNOTA,DTNOTA " +
+                $"FROM TNOTAS WHERE CDUSU='{codigoUsuario}'", this.ConectarBanco());
+            DataTable dados = new DataTable();
+            adaptador.Fill(dados);
+
+            return dados;
+
+        }
+
+        public int QuantidadeDeNotasPorUsuario(string codigoUsuario) {
+            adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) " +
+                $"FROM TNOTAS WHERE CDUSU='{codigoUsuario}'", this.ConectarBanco());
+            DataTable dados = new DataTable();
+            adaptador.Fill(dados);
+
+            return int.Parse(dados.Rows[0][0].ToString());
+        }
+
+        public DataTable ObtemValordaNota(string codigoNota, string campo) {
+            adaptador = new SqlCeDataAdapter($"SELECT {campo} " +
+                $"FROM TNOTAS WHERE CDNOTA='{codigoNota}'", this.ConectarBanco());
+            DataTable dados = new DataTable();
+            if (dados is null) {
+                throw new DomainException("Nota não existe!");
+            }
+            adaptador.Fill(dados);
+
+            return dados;
+        }
+
+        public void AlteraValorDaNota(string codigoNota, string campo, string novoValor) {
+            Notas nota = new Notas();
+            string query = $"UPDATE TNOTAS SET {campo} = '{novoValor}', DTNOTA = '{nota.DataTexto()}'" +
+                $" WHERE CDNOTA = '{codigoNota}';";
+            operario = new SqlCeCommand(query, this.ConectarBanco());
+            int x = 0;
+            operario.ExecuteNonQuery();
+            int y = 0;
+        }
+
+
     }
 }

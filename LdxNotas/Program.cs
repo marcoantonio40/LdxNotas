@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 using System.Data;
 using LdxNotas.Entidades;
@@ -12,18 +8,15 @@ namespace LdxNotas {
     class Program {
         static void Main(string[] args) {
 
-           // try {
-                string query, titulo, descricao, data, cdnota,nome;
-                int seq = 0, editar, existe;
+            try {
+                string  titulo, descricao, cdnota, nome;
+                int seq = 0, editar;
                 Funcoes funcao = new Funcoes();
                 Usuarios usuario;
                 Notas nota;
-                Banco banco = new Banco();
-
-
-                SqlCeCommand operario = new SqlCeCommand();
+                Banco banco = new Banco();             
                 SqlCeConnection conexao = banco.ConectarBanco();
-               
+
                 //Tela de Login
                 Console.WriteLine("------------LDXNOTAS--------------");
                 Console.Write("LOGIN: ");
@@ -32,22 +25,16 @@ namespace LdxNotas {
                 string senha = Console.ReadLine();
                 Console.WriteLine("");
 
-
                 //Valida login
 
-
-                SqlCeDataAdapter adaptador = new SqlCeDataAdapter($" DSNOME,CDusu FROM TUSUARIOS " +
-                    $"WHERE DSLOGIN='{login}' AND DSSENH='{funcao.Criptografa(senha)}';", conexao);
                 DataTable dados = new DataTable();
-                dados.Clear();
-                
-                string codigo = banco.BuscaCodigoUsuario(login,senha,conexao);
-                
 
-                if (!banco.ValidaLoginTusuarios(login,senha,conexao)) {
-                
-                Console.WriteLine("Login Inválido!");
-                    
+                string codigoDoUsuario = banco.BuscaCodigoUsuario(login, senha, conexao);
+
+                if (!banco.ValidaLoginTusuarios(login, senha, conexao)) {
+
+                    Console.WriteLine("Login Inválido!");
+
                 } else {
                     int opcao;
                     do {
@@ -66,17 +53,14 @@ namespace LdxNotas {
                             nome = Console.ReadLine();
                             Console.Write("LOGIN: ");
                             login = Console.ReadLine();
-                            
-                            if (banco.VerificaSeLoginUsuarioExiste(login,conexao)) {
+
+                            if (banco.VerificaSeLoginUsuarioExiste(login, conexao)) {
 
                                 Console.Write("SENHA: ");
                                 senha = Console.ReadLine();
 
                                 usuario = new Usuarios(nome, login, senha);
-                                query = "INSERT INTO TUSUARIOS VALUES ('" + usuario.codUsuario +
-                                    "','" + usuario.nomUsuario + "','" + usuario.logUsuario + "','" + usuario.senUsuario + "');";
-                                operario = new SqlCeCommand(query, conexao);
-                                operario.ExecuteNonQuery();
+                                banco.InsereUsuariosBanco(usuario);
 
 
                             } else {
@@ -94,35 +78,25 @@ namespace LdxNotas {
                             Console.Write("Descrição da Nota: ");
                             descricao = Console.ReadLine();
 
-                            nota = new Notas(codigo, titulo, descricao);
-                            query = "INSERT INTO TNOTAS VALUES ('" + nota.codNota + "','" + nota.codUsuario + "','" + nota.titNota + "','" + nota.desNota + "','" + nota.data + "');";
-                            operario = new SqlCeCommand(query, conexao);
-                            operario.ExecuteNonQuery();
+                            nota = new Notas(codigoDoUsuario, titulo, descricao);
+                            banco.InsereNotasBanco(nota);
+
                         }//=======================================VISUALIZA NOTAS =======================================
                         else if (opcao == 3) {
-                            adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TNOTAS WHERE CDUSU='{codigo}';", conexao);
-                            dados.Clear();
-                            adaptador.Fill(dados);
-                            int linhas = int.Parse(dados.Rows[0][seq].ToString());
-                            seq++;
 
-                            adaptador = new SqlCeDataAdapter($"SELECT CDNOTA,DSTITU,DSNOTA,DTNOTA FROM TNOTAS WHERE CDUSU='{codigo}'", conexao);
-                            dados.Clear();
-                            adaptador.Fill(dados);
+                            int linhas = banco.QuantidadeDeNotasPorUsuario(codigoDoUsuario);
+                            dados = banco.ObterNotas(codigoDoUsuario);
 
                             for (int i = 0; i < linhas; i++) {
-                                cdnota = dados.Rows[i][seq].ToString();
+
+                                Console.WriteLine($"--------------NOTA {dados.Rows[i][seq].ToString()} --------------");
                                 seq++;
-                                titulo = dados.Rows[i][seq].ToString();
+                                Console.WriteLine($"TÍTULO: {dados.Rows[i][seq].ToString()}");
                                 seq++;
-                                descricao = dados.Rows[i][seq].ToString();
+                                Console.WriteLine($"DESCRIÇÃO: {dados.Rows[i][seq].ToString()}");
                                 seq++;
-                                data = dados.Rows[i][seq].ToString();
+                                Console.WriteLine($"DATA DE ALTERAÇÃO: {dados.Rows[i][seq].ToString()}");
                                 seq++;
-                                Console.WriteLine($"--------------NOTA {cdnota} --------------");
-                                Console.WriteLine($"TÍTULO: {titulo}");
-                                Console.WriteLine($"DESCRIÇÃO: {descricao}");
-                                Console.WriteLine($"DATA DE ALTERAÇÃO: {data}");
                                 Console.WriteLine("-------------------------------------");
                                 seq -= 4;
                             }
@@ -135,46 +109,29 @@ namespace LdxNotas {
                             Console.WriteLine("2 - Descrição");
                             editar = int.Parse(Console.ReadLine());
 
-                            adaptador = new SqlCeDataAdapter($"SELECT COUNT(*) FROM TNOTAS WHERE CDNOTA='{cdnota}';", conexao);
-                            dados.Clear();
-                            adaptador.Fill(dados);
-                            existe = int.Parse(dados.Rows[0][seq].ToString());
-                            seq++;
+                            if (editar == 1) {
+                                dados = banco.ObtemValordaNota(cdnota, "DSTITU");
+                                Console.WriteLine("Novo título: ");
+                                titulo = Console.ReadLine();
+                                banco.AlteraValorDaNota(cdnota, "DSTITU", titulo);
 
-                            if (existe == 0) {
-                                Console.WriteLine("Nota não existe!");
-                            } else {
-                                if (editar == 1) {
-                                    Console.WriteLine("Novo título: ");
-                                    titulo = Console.ReadLine();
-                                    Notas t1 = new Notas();
-                                    query = "UPDATE TNOTAS SET DSTITU='" + titulo + "',DTNOTA='" + t1.DataTexto() + "' WHERE CDNOTA='" + cdnota + "';";
-                                    operario = new SqlCeCommand(query, conexao);
-                                    operario.ExecuteNonQuery();
-
-                                } else if (editar == 2) {
-                                    Console.WriteLine("Nova descrição: ");
-                                    descricao = Console.ReadLine();
-                                    Notas t1 = new Notas();
-                                    query = "UPDATE TNOTAS SET DSNOTA='" + descricao + "',DTNOTA='" + t1.DataTexto() + "' WHERE CDNOTA='" + cdnota + "';";
-                                    operario = new SqlCeCommand(query, conexao);
-                                    operario.ExecuteNonQuery();
-                                }
+                            } else if (editar == 2) {
+                                dados = banco.ObtemValordaNota(cdnota, "DSNOTA");
+                                Console.WriteLine("Nova descrição: ");
+                                descricao = Console.ReadLine();
+                                banco.AlteraValorDaNota(cdnota, "DSNOTA", descricao);
                             }
-
-
                         }
-
 
                     } while (opcao != 0);
                 }
                 conexao.Close();
 
-            //} catch (Exception e) {
-            //    Console.WriteLine(e.Message);
-            //}
+        } catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
 
-        }
+}
 
 
     }
