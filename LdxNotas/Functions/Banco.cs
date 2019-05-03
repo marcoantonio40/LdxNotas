@@ -116,9 +116,9 @@ namespace LdxNotas.Functions {
             string query = $"UPDATE TNOTAS SET {campo} = '{novoValor}', DTNOTA = '{nota.DataTexto()}'" +
                 $" WHERE CDNOTA = '{codigoNota}';";
             operario = new SqlCeCommand(query, this.ConectarBanco());
-            int x = 0;
+            
             operario.ExecuteNonQuery();
-            int y = 0;
+            
         }
 
 
