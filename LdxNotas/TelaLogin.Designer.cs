@@ -106,7 +106,10 @@
             this.Controls.Add(this.TetxBoxLogin);
             this.Controls.Add(this.ButtonCadastrar);
             this.Controls.Add(this.ButtonLogar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "TelaLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaLogin";
             this.ResumeLayout(false);
             this.PerformLayout();

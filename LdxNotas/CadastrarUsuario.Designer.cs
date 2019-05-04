@@ -24,45 +24,47 @@
         /// </summary>
         private void InitializeComponent() {
             this.ButtonCadastrarRegistrar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TextBoxCadastrarUsuarioNome = new System.Windows.Forms.TextBox();
+            this.TextBoxCadastrarUsuarioLogin = new System.Windows.Forms.TextBox();
+            this.TextBoxCadastrarUsuarioSenha = new System.Windows.Forms.TextBox();
             this.LabelCadastraUsuarioNome = new System.Windows.Forms.Label();
             this.LabelCadastraUsuarioLogin = new System.Windows.Forms.Label();
             this.LabelCadastraUsuarioSenha = new System.Windows.Forms.Label();
             this.ButtonCadastrarVoltar = new System.Windows.Forms.Button();
             this.ButtonCadastrarSair = new System.Windows.Forms.Button();
+            this.LabelCadastraUsuarioStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonCadastrarRegistrar
             // 
-            this.ButtonCadastrarRegistrar.Location = new System.Drawing.Point(12, 138);
+            this.ButtonCadastrarRegistrar.Location = new System.Drawing.Point(18, 156);
             this.ButtonCadastrarRegistrar.Name = "ButtonCadastrarRegistrar";
             this.ButtonCadastrarRegistrar.Size = new System.Drawing.Size(85, 23);
             this.ButtonCadastrarRegistrar.TabIndex = 0;
             this.ButtonCadastrarRegistrar.Text = "CONFIRMAR";
             this.ButtonCadastrarRegistrar.UseVisualStyleBackColor = true;
+            this.ButtonCadastrarRegistrar.Click += new System.EventHandler(this.ButtonCadastrarRegistrar_Click);
             // 
-            // textBox1
+            // TextBoxCadastrarUsuarioNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(75, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 20);
-            this.textBox1.TabIndex = 1;
+            this.TextBoxCadastrarUsuarioNome.Location = new System.Drawing.Point(75, 23);
+            this.TextBoxCadastrarUsuarioNome.Name = "TextBoxCadastrarUsuarioNome";
+            this.TextBoxCadastrarUsuarioNome.Size = new System.Drawing.Size(221, 20);
+            this.TextBoxCadastrarUsuarioNome.TabIndex = 1;
             // 
-            // textBox2
+            // TextBoxCadastrarUsuarioLogin
             // 
-            this.textBox2.Location = new System.Drawing.Point(75, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(221, 20);
-            this.textBox2.TabIndex = 2;
+            this.TextBoxCadastrarUsuarioLogin.Location = new System.Drawing.Point(75, 57);
+            this.TextBoxCadastrarUsuarioLogin.Name = "TextBoxCadastrarUsuarioLogin";
+            this.TextBoxCadastrarUsuarioLogin.Size = new System.Drawing.Size(221, 20);
+            this.TextBoxCadastrarUsuarioLogin.TabIndex = 2;
             // 
-            // textBox3
+            // TextBoxCadastrarUsuarioSenha
             // 
-            this.textBox3.Location = new System.Drawing.Point(75, 92);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(221, 20);
-            this.textBox3.TabIndex = 3;
+            this.TextBoxCadastrarUsuarioSenha.Location = new System.Drawing.Point(75, 92);
+            this.TextBoxCadastrarUsuarioSenha.Name = "TextBoxCadastrarUsuarioSenha";
+            this.TextBoxCadastrarUsuarioSenha.Size = new System.Drawing.Size(221, 20);
+            this.TextBoxCadastrarUsuarioSenha.TabIndex = 3;
             // 
             // LabelCadastraUsuarioNome
             // 
@@ -93,37 +95,51 @@
             // 
             // ButtonCadastrarVoltar
             // 
-            this.ButtonCadastrarVoltar.Location = new System.Drawing.Point(116, 138);
+            this.ButtonCadastrarVoltar.Location = new System.Drawing.Point(122, 156);
             this.ButtonCadastrarVoltar.Name = "ButtonCadastrarVoltar";
             this.ButtonCadastrarVoltar.Size = new System.Drawing.Size(78, 23);
             this.ButtonCadastrarVoltar.TabIndex = 7;
             this.ButtonCadastrarVoltar.Text = "VOLTAR";
             this.ButtonCadastrarVoltar.UseVisualStyleBackColor = true;
+            this.ButtonCadastrarVoltar.Click += new System.EventHandler(this.ButtonCadastrarVoltar_Click);
             // 
             // ButtonCadastrarSair
             // 
-            this.ButtonCadastrarSair.Location = new System.Drawing.Point(212, 138);
+            this.ButtonCadastrarSair.Location = new System.Drawing.Point(218, 156);
             this.ButtonCadastrarSair.Name = "ButtonCadastrarSair";
             this.ButtonCadastrarSair.Size = new System.Drawing.Size(84, 23);
             this.ButtonCadastrarSair.TabIndex = 8;
             this.ButtonCadastrarSair.Text = "SAIR";
             this.ButtonCadastrarSair.UseVisualStyleBackColor = true;
+            this.ButtonCadastrarSair.Click += new System.EventHandler(this.ButtonCadastrarSair_Click);
+            // 
+            // LabelCadastraUsuarioStatus
+            // 
+            this.LabelCadastraUsuarioStatus.AutoSize = true;
+            this.LabelCadastraUsuarioStatus.Location = new System.Drawing.Point(132, 129);
+            this.LabelCadastraUsuarioStatus.Name = "LabelCadastraUsuarioStatus";
+            this.LabelCadastraUsuarioStatus.Size = new System.Drawing.Size(0, 13);
+            this.LabelCadastraUsuarioStatus.TabIndex = 9;
             // 
             // CadastrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 182);
+            this.ClientSize = new System.Drawing.Size(319, 187);
+            this.Controls.Add(this.LabelCadastraUsuarioStatus);
             this.Controls.Add(this.ButtonCadastrarSair);
             this.Controls.Add(this.ButtonCadastrarVoltar);
             this.Controls.Add(this.LabelCadastraUsuarioSenha);
             this.Controls.Add(this.LabelCadastraUsuarioLogin);
             this.Controls.Add(this.LabelCadastraUsuarioNome);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TextBoxCadastrarUsuarioSenha);
+            this.Controls.Add(this.TextBoxCadastrarUsuarioLogin);
+            this.Controls.Add(this.TextBoxCadastrarUsuarioNome);
             this.Controls.Add(this.ButtonCadastrarRegistrar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "CadastrarUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastrarUsuario";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -133,13 +149,14 @@
         #endregion
 
         private System.Windows.Forms.Button ButtonCadastrarRegistrar;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TextBoxCadastrarUsuarioNome;
+        private System.Windows.Forms.TextBox TextBoxCadastrarUsuarioLogin;
+        private System.Windows.Forms.TextBox TextBoxCadastrarUsuarioSenha;
         private System.Windows.Forms.Label LabelCadastraUsuarioNome;
         private System.Windows.Forms.Label LabelCadastraUsuarioLogin;
         private System.Windows.Forms.Label LabelCadastraUsuarioSenha;
         private System.Windows.Forms.Button ButtonCadastrarVoltar;
         private System.Windows.Forms.Button ButtonCadastrarSair;
+        private System.Windows.Forms.Label LabelCadastraUsuarioStatus;
     }
 }

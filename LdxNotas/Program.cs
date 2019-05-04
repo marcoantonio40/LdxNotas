@@ -15,6 +15,7 @@ namespace LdxNotas {
             
             TelaLogin telaLogin = new TelaLogin();
             telaLogin.ShowDialog();
+            
 
             //    try {
             //        string  titulo, descricao, cdnota, nome;

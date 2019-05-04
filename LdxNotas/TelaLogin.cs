@@ -11,14 +11,14 @@ using LdxNotas.Functions;
 namespace LdxNotas {
     public partial class TelaLogin : Form {
         Banco banco = new Banco();
-        
+
         public TelaLogin() {
             InitializeComponent();
         }
 
         private void ButtonLogar_Click(object sender, EventArgs e) {
 
-            if(banco.ValidaLoginTusuarios(TetxBoxLogin.Text, TextBoxSenha.Text, banco.ConectarBanco())) {
+            if (banco.ValidaLoginTusuarios(TetxBoxLogin.Text, TextBoxSenha.Text, banco.ConectarBanco())) {
                 MessageBox.Show("Usuário existe!");
             } else {
                 MessageBox.Show("Usuário não existe!");
@@ -26,6 +26,9 @@ namespace LdxNotas {
         }
 
         private void ButtonCadastrar_Click(object sender, EventArgs e) {
+            CadastrarUsuario cadastraUsuario = new CadastrarUsuario();
+            this.Visible = false;
+            cadastraUsuario.ShowDialog();
 
 
         }
