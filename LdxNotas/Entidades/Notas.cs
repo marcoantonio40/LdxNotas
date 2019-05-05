@@ -5,7 +5,13 @@ namespace LdxNotas.Entidades {
     class Notas {
 
         public Funcoes f = new Funcoes();
-        public string codigoNota { get; set; }        public string codigoUsuario { get; set; }        public string tituloNota { get; set; }        public string descricaoNota { get; set; }        public string dataNota { get; set; }        private DateTime dtAlter;
+        public string codigoNota { get; set; }
+        public string codigoUsuario { get; set; }
+        public string tituloNota { get; set; }
+
+        public string descricaoNota { get; set; }
+        public string dataNota { get; set; }
+        private DateTime dtAlter;
         Banco banco = new Banco();
 
         public Notas() { }

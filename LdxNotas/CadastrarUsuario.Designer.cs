@@ -48,6 +48,7 @@
             // TextBoxCadastrarUsuarioNome
             // 
             this.TextBoxCadastrarUsuarioNome.Location = new System.Drawing.Point(75, 23);
+            this.TextBoxCadastrarUsuarioNome.MaxLength = 50;
             this.TextBoxCadastrarUsuarioNome.Name = "TextBoxCadastrarUsuarioNome";
             this.TextBoxCadastrarUsuarioNome.Size = new System.Drawing.Size(221, 20);
             this.TextBoxCadastrarUsuarioNome.TabIndex = 1;
@@ -55,6 +56,7 @@
             // TextBoxCadastrarUsuarioLogin
             // 
             this.TextBoxCadastrarUsuarioLogin.Location = new System.Drawing.Point(75, 57);
+            this.TextBoxCadastrarUsuarioLogin.MaxLength = 50;
             this.TextBoxCadastrarUsuarioLogin.Name = "TextBoxCadastrarUsuarioLogin";
             this.TextBoxCadastrarUsuarioLogin.Size = new System.Drawing.Size(221, 20);
             this.TextBoxCadastrarUsuarioLogin.TabIndex = 2;
@@ -62,6 +64,7 @@
             // TextBoxCadastrarUsuarioSenha
             // 
             this.TextBoxCadastrarUsuarioSenha.Location = new System.Drawing.Point(75, 92);
+            this.TextBoxCadastrarUsuarioSenha.MaxLength = 50;
             this.TextBoxCadastrarUsuarioSenha.Name = "TextBoxCadastrarUsuarioSenha";
             this.TextBoxCadastrarUsuarioSenha.Size = new System.Drawing.Size(221, 20);
             this.TextBoxCadastrarUsuarioSenha.TabIndex = 3;

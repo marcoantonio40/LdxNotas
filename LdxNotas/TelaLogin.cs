@@ -19,7 +19,11 @@ namespace LdxNotas {
         private void ButtonLogar_Click(object sender, EventArgs e) {
 
             if (banco.ValidaLoginTusuarios(TetxBoxLogin.Text, TextBoxSenha.Text, banco.ConectarBanco())) {
-                MessageBox.Show("Usuário existe!");
+                string codigoUsuario = banco.BuscaCodigoUsuario(TetxBoxLogin.Text, TextBoxSenha.Text, banco.ConectarBanco());
+                TelaNotas telaNota = new TelaNotas(codigoUsuario);
+                this.Visible = false;
+                telaNota.ShowDialog();
+
             } else {
                 MessageBox.Show("Usuário não existe!");
             }
