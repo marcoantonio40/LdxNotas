@@ -46,7 +46,23 @@ namespace LdxNotas {
                 nota = new Notas(codigo, TextBoxTelaNotaTitulo.Text, TextBoxTelaNotaDescricao.Text);
                 banco.InsereNotasBanco(nota);
                 funcao.LimparTextBoxes(this.Controls);
+                LabelTelaNotasStatus.Visible = true;
             }
+        }
+
+        private void ButtonTelaNotaVisualizar_Click(object sender, EventArgs e) {
+            DataTable notas = new DataTable();
+            notas = banco.ObterNotas(codigo);
+            DataGridViewTelaNota.Columns[0].Name = "Código";
+            DataGridViewTelaNota.DataSource = notas;
+        }
+
+        private void TextBoxTelaNotaTitulo_TextChanged(object sender, EventArgs e) {
+            LabelTelaNotasStatus.Visible = false;
+        }
+
+        private void TextBoxTelaNotaDescricao_TextChanged(object sender, EventArgs e) {
+            LabelTelaNotasStatus.Visible = false;
         }
     }
 }

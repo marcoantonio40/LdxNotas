@@ -23,6 +23,9 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonTelaNotaCadastrar = new System.Windows.Forms.Button();
             this.ButtonTelaNotaEditar = new System.Windows.Forms.Button();
             this.ButtonTelaNotaDeletar = new System.Windows.Forms.Button();
@@ -34,6 +37,9 @@
             this.TextBoxTelaNotaDescricao = new System.Windows.Forms.TextBox();
             this.ButtonTelaNotaConfirmar = new System.Windows.Forms.Button();
             this.ButtonTelaNotaCancelar = new System.Windows.Forms.Button();
+            this.LabelTelaNotasStatus = new System.Windows.Forms.Label();
+            this.DataGridViewTelaNota = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTelaNota)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonTelaNotaCadastrar
@@ -83,6 +89,7 @@
             this.ButtonTelaNotaVisualizar.TabIndex = 4;
             this.ButtonTelaNotaVisualizar.Text = "VISUALIZAR";
             this.ButtonTelaNotaVisualizar.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaVisualizar.Click += new System.EventHandler(this.ButtonTelaNotaVisualizar_Click);
             // 
             // LabelTelaNotaTitulo
             // 
@@ -112,6 +119,7 @@
             this.TextBoxTelaNotaTitulo.Size = new System.Drawing.Size(154, 20);
             this.TextBoxTelaNotaTitulo.TabIndex = 7;
             this.TextBoxTelaNotaTitulo.Visible = false;
+            this.TextBoxTelaNotaTitulo.TextChanged += new System.EventHandler(this.TextBoxTelaNotaTitulo_TextChanged);
             // 
             // TextBoxTelaNotaDescricao
             // 
@@ -122,6 +130,7 @@
             this.TextBoxTelaNotaDescricao.Size = new System.Drawing.Size(154, 92);
             this.TextBoxTelaNotaDescricao.TabIndex = 8;
             this.TextBoxTelaNotaDescricao.Visible = false;
+            this.TextBoxTelaNotaDescricao.TextChanged += new System.EventHandler(this.TextBoxTelaNotaDescricao_TextChanged);
             // 
             // ButtonTelaNotaConfirmar
             // 
@@ -145,11 +154,55 @@
             this.ButtonTelaNotaCancelar.Visible = false;
             this.ButtonTelaNotaCancelar.Click += new System.EventHandler(this.ButtonTelaNotaCancelar_Click);
             // 
+            // LabelTelaNotasStatus
+            // 
+            this.LabelTelaNotasStatus.AutoSize = true;
+            this.LabelTelaNotasStatus.Location = new System.Drawing.Point(10, 412);
+            this.LabelTelaNotasStatus.Name = "LabelTelaNotasStatus";
+            this.LabelTelaNotasStatus.Size = new System.Drawing.Size(75, 26);
+            this.LabelTelaNotasStatus.TabIndex = 11;
+            this.LabelTelaNotasStatus.Text = "Nota inserida\r\n com sucesso!";
+            this.LabelTelaNotasStatus.Visible = false;
+            // 
+            // DataGridViewTelaNota
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTelaNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataGridViewTelaNota.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTelaNota.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DataGridViewTelaNota.Location = new System.Drawing.Point(273, 12);
+            this.DataGridViewTelaNota.Name = "DataGridViewTelaNota";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTelaNota.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DataGridViewTelaNota.Size = new System.Drawing.Size(557, 381);
+            this.DataGridViewTelaNota.TabIndex = 12;
+            // 
             // TelaNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 450);
+            this.Controls.Add(this.DataGridViewTelaNota);
+            this.Controls.Add(this.LabelTelaNotasStatus);
             this.Controls.Add(this.ButtonTelaNotaCancelar);
             this.Controls.Add(this.ButtonTelaNotaConfirmar);
             this.Controls.Add(this.TextBoxTelaNotaDescricao);
@@ -163,7 +216,9 @@
             this.Controls.Add(this.ButtonTelaNotaCadastrar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "TelaNotas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaNotas";
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTelaNota)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +237,7 @@
         private System.Windows.Forms.TextBox TextBoxTelaNotaDescricao;
         private System.Windows.Forms.Button ButtonTelaNotaConfirmar;
         private System.Windows.Forms.Button ButtonTelaNotaCancelar;
+        private System.Windows.Forms.Label LabelTelaNotasStatus;
+        private System.Windows.Forms.DataGridView DataGridViewTelaNota;
     }
 }
