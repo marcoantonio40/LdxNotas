@@ -53,14 +53,21 @@ namespace LdxNotas {
         private void ButtonTelaNotaVisualizar_Click(object sender, EventArgs e) {
             DataTable notas = new DataTable();
             notas = banco.ObterNotas(codigo);
-            //DataGridViewTelaNota.Columns[0].Name = "Código";
+           
+
             notas.Columns[0].ColumnName = "CÓDIGO";
             notas.Columns[1].ColumnName = "TÍTULO";
             notas.Columns[2].ColumnName = "DESCRIÇÃO";
             notas.Columns[3].ColumnName = "CRIAÇÃO/ALTERAÇÃO";
-            
-            
             DataGridViewTelaNota.DataSource = notas;
+            foreach (DataGridViewColumn column in DataGridViewTelaNota.Columns) {
+                                
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                
+            }
+            ButtonTelaNotaVisualizar.Enabled = false;
+
+            
         }
 
         private void TextBoxTelaNotaTitulo_TextChanged(object sender, EventArgs e) {
@@ -69,6 +76,18 @@ namespace LdxNotas {
 
         private void TextBoxTelaNotaDescricao_TextChanged(object sender, EventArgs e) {
             LabelTelaNotasStatus.Visible = false;
+        }
+
+        private void ButtonTelaNotaEditar_Click(object sender, EventArgs e) {
+            
+        }
+
+
+        private string[] DataGridViewTelaNota_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            string titulo = DataGridViewTelaNota.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string descricao = DataGridViewTelaNota.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string[] vetor = { titulo, descricao };
+            return vetor;
         }
     }
 }

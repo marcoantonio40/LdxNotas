@@ -60,6 +60,7 @@
             this.ButtonTelaNotaEditar.TabIndex = 1;
             this.ButtonTelaNotaEditar.Text = "EDITAR";
             this.ButtonTelaNotaEditar.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaEditar.Click += new System.EventHandler(this.ButtonTelaNotaEditar_Click);
             // 
             // ButtonTelaNotaDeletar
             // 
@@ -199,6 +200,7 @@
             this.DataGridViewTelaNota.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewTelaNota.Size = new System.Drawing.Size(557, 381);
             this.DataGridViewTelaNota.TabIndex = 12;
+            this.DataGridViewTelaNota.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTelaNota_CellDoubleClick);
             // 
             // TelaNotas
             // 
