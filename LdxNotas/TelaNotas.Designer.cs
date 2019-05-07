@@ -166,6 +166,9 @@
             // 
             // DataGridViewTelaNota
             // 
+            this.DataGridViewTelaNota.AllowUserToAddRows = false;
+            this.DataGridViewTelaNota.AllowUserToDeleteRows = false;
+            this.DataGridViewTelaNota.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,6 +188,7 @@
             this.DataGridViewTelaNota.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridViewTelaNota.Location = new System.Drawing.Point(273, 12);
             this.DataGridViewTelaNota.Name = "DataGridViewTelaNota";
+            this.DataGridViewTelaNota.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

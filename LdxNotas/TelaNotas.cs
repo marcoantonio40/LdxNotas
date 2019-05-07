@@ -53,7 +53,13 @@ namespace LdxNotas {
         private void ButtonTelaNotaVisualizar_Click(object sender, EventArgs e) {
             DataTable notas = new DataTable();
             notas = banco.ObterNotas(codigo);
-            DataGridViewTelaNota.Columns[0].Name = "Código";
+            //DataGridViewTelaNota.Columns[0].Name = "Código";
+            notas.Columns[0].ColumnName = "CÓDIGO";
+            notas.Columns[1].ColumnName = "TÍTULO";
+            notas.Columns[2].ColumnName = "DESCRIÇÃO";
+            notas.Columns[3].ColumnName = "CRIAÇÃO/ALTERAÇÃO";
+            
+            
             DataGridViewTelaNota.DataSource = notas;
         }
 
