@@ -79,15 +79,21 @@ namespace LdxNotas {
         }
 
         private void ButtonTelaNotaEditar_Click(object sender, EventArgs e) {
-            
+            LabelTelaNotaTitulo.Visible = true;
+            LabelTelaNotaDescricao.Visible = true;
+            TextBoxTelaNotaTitulo.Visible = true;
+            TextBoxTelaNotaDescricao.Visible = true;
+            ButtonTelaNotaConfirmar.Visible = true;
+            ButtonTelaNotaCancelar.Visible = true;
         }
 
-
-        private string[] DataGridViewTelaNota_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+        private void DataGridViewTelaNota_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             string titulo = DataGridViewTelaNota.Rows[e.RowIndex].Cells[1].Value.ToString();
             string descricao = DataGridViewTelaNota.Rows[e.RowIndex].Cells[2].Value.ToString();
-            string[] vetor = { titulo, descricao };
-            return vetor;
+            
+            TextBoxTelaNotaTitulo.Text = titulo;
+            TextBoxTelaNotaDescricao.Text = descricao;
+
         }
     }
 }
