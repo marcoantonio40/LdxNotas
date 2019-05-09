@@ -131,6 +131,14 @@ namespace LdxNotas.Functions {
 
         }
 
+        public void DeletarNota(string codigoNota) {
+
+            string query = $"DELETE FROM TNOTAS WHERE CDNOTA = '{codigoNota}';";
+            operario = new SqlCeCommand(query, this.ConectarBanco());
+            operario.ExecuteNonQuery();
+
+        }
+
 
     }
 }

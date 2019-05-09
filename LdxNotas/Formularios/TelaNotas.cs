@@ -21,6 +21,7 @@ namespace LdxNotas {
             this.codigo = codigoUsuario;
             InitializeComponent();
         }
+        public TelaNotas() { }
                 
 
         private void ButtonTelaNotaSair_Click(object sender, EventArgs e) {
@@ -28,13 +29,11 @@ namespace LdxNotas {
         }
 
         private void ButtonTelaNotaCadastrar_Click(object sender, EventArgs e) {
-            ButtonTelaNotaConfirmarEdicao.Visible = false;
             LabelTelaNotaTitulo.Visible = true;
             LabelTelaNotaDescricao.Visible = true;
             TextBoxTelaNotaTitulo.Visible = true;
             TextBoxTelaNotaDescricao.Visible = true;
-            ButtonTelaNotaConfirmar.Visible = true;
-            ButtonTelaNotaCancelar.Visible = true;
+            funcao.AtivarBotoesTelaNota(ButtonTelaNotaConfirmar, ButtonTelaNotaCancelar, this.Controls);
 
         }
 
@@ -85,8 +84,7 @@ namespace LdxNotas {
             LabelTelaNotaDescricao.Visible = true;
             TextBoxTelaNotaTitulo.Visible = true;
             TextBoxTelaNotaDescricao.Visible = true;
-            ButtonTelaNotaCancelar.Visible = true;
-            ButtonTelaNotaConfirmarEdicao.Visible = true;
+            funcao.AtivarBotoesTelaNota(ButtonTelaNotaCancelar, ButtonTelaNotaConfirmarEdicao, this.Controls);
         }
 
         private void DataGridViewTelaNota_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
@@ -116,21 +114,42 @@ namespace LdxNotas {
         }
 
         private void ButtonTelaNotaDeletar_Click(object sender, EventArgs e) {
-            ButtonTelaNotaConfirmarDelecao.Visible = true;
-            LabelTelaNotaTitulo.Visible = true;
-            LabelTelaNotaDescricao.Visible = true;
+            funcao.AtivarBotoesTelaNota(ButtonTelaNotaConfirmarDelecao, ButtonTelaNotaCancelarDelecao, this.Controls);
+            funcao.MostarLabels(LabelTelaNotaTitulo, LabelTelaNotaDescricao, LabelTelaNotaDescricaoDelecao, LabelTelaNotaTituloDelecao,this.Controls);       
             LabelTelaNotaTituloDelecao.MaximumSize = new Size(150, 0);
             LabelTelaNotaTituloDelecao.AutoSize = true;
             LabelTelaNotaTituloDelecao.Location = new Point(13, 281);
             LabelTelaNotaDescricaoDelecao.Location = new Point(13, 324);
             LabelTelaNotaDescricaoDelecao.MaximumSize = new Size(150, 0);
             LabelTelaNotaDescricaoDelecao.AutoSize = true;
-            LabelTelaNotaDescricaoDelecao.Visible = true;
-            LabelTelaNotaTituloDelecao.Visible = true;
+            TextBoxTelaNotaTitulo.Visible = false;
+            TextBoxTelaNotaDescricao.Visible = false;
+            
 
         }
 
         private void ButtonTelaNotaConfirmarDelecao_Click(object sender, EventArgs e) {
+            funcao.LimparLabels(LabelTelaNotaTituloDelecao, LabelTelaNotaDescricaoDelecao, this.Controls);
+
+            if (MessageBox.Show("Deleção de nota" + Environment.NewLine +
+                        "Deseja deletar?", "Atenção",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                banco.DeletarNota(LabelTelaNotaCodigoNota.Text);
+                funcao.LimparTextBoxes(this.Controls);
+                
+            } else {
+                funcao.LimparLabels(this.Controls);
+            }
+
+            LabelTelaNotasStatus.Text = "Nota deletada";
+            LabelTelaNotasStatus.Visible = true;
+            ButtonTelaNotaVisualizar.Enabled = true;
+        }
+
+        private void ButtonTelaNotaCancelarDelecao_Click(object sender, EventArgs e) {
+
+            funcao.LimparLabels(LabelTelaNotaTituloDelecao, LabelTelaNotaDescricaoDelecao, this.Controls);
+
 
         }
     }
