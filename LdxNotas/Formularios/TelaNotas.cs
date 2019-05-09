@@ -28,6 +28,7 @@ namespace LdxNotas {
         }
 
         private void ButtonTelaNotaCadastrar_Click(object sender, EventArgs e) {
+            ButtonTelaNotaConfirmarEdicao.Visible = false;
             LabelTelaNotaTitulo.Visible = true;
             LabelTelaNotaDescricao.Visible = true;
             TextBoxTelaNotaTitulo.Visible = true;
@@ -47,14 +48,15 @@ namespace LdxNotas {
                 banco.InsereNotasBanco(nota);
                 funcao.LimparTextBoxes(this.Controls);
                 LabelTelaNotasStatus.Visible = true;
+                ButtonTelaNotaVisualizar.Enabled = true;
             }
         }
 
         private void ButtonTelaNotaVisualizar_Click(object sender, EventArgs e) {
             DataTable notas = new DataTable();
             notas = banco.ObterNotas(codigo);
-           
 
+            LabelTelaNotasStatus.Visible = false;
             notas.Columns[0].ColumnName = "CÓDIGO";
             notas.Columns[1].ColumnName = "TÍTULO";
             notas.Columns[2].ColumnName = "DESCRIÇÃO";
@@ -83,16 +85,52 @@ namespace LdxNotas {
             LabelTelaNotaDescricao.Visible = true;
             TextBoxTelaNotaTitulo.Visible = true;
             TextBoxTelaNotaDescricao.Visible = true;
-            ButtonTelaNotaConfirmar.Visible = true;
             ButtonTelaNotaCancelar.Visible = true;
+            ButtonTelaNotaConfirmarEdicao.Visible = true;
         }
 
         private void DataGridViewTelaNota_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            LabelTelaNotaCodigoNota.Text = DataGridViewTelaNota.Rows[e.RowIndex].Cells[0].Value.ToString();
             string titulo = DataGridViewTelaNota.Rows[e.RowIndex].Cells[1].Value.ToString();
             string descricao = DataGridViewTelaNota.Rows[e.RowIndex].Cells[2].Value.ToString();
             
             TextBoxTelaNotaTitulo.Text = titulo;
             TextBoxTelaNotaDescricao.Text = descricao;
+            LabelTelaNotaDescricaoDelecao.Text = descricao;
+            LabelTelaNotaTituloDelecao.Text = titulo;
+
+        }
+
+        private void ButtonTelaNotaConfirmarEdicao_Click(object sender, EventArgs e) {
+            if(MessageBox.Show("Edição de nota" + Environment.NewLine +
+                        "Deseja alterar?", "Atenção", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                banco.AlteraValorDaNotaForm(LabelTelaNotaCodigoNota.Text, TextBoxTelaNotaTitulo.Text, TextBoxTelaNotaDescricao.Text);
+                funcao.LimparTextBoxes(this.Controls);
+                ButtonTelaNotaVisualizar.Enabled = true;
+            } else {
+                funcao.LimparTextBoxes(this.Controls);
+            }
+
+                
+        }
+
+        private void ButtonTelaNotaDeletar_Click(object sender, EventArgs e) {
+            ButtonTelaNotaConfirmarDelecao.Visible = true;
+            LabelTelaNotaTitulo.Visible = true;
+            LabelTelaNotaDescricao.Visible = true;
+            LabelTelaNotaTituloDelecao.MaximumSize = new Size(150, 0);
+            LabelTelaNotaTituloDelecao.AutoSize = true;
+            LabelTelaNotaTituloDelecao.Location = new Point(13, 281);
+            LabelTelaNotaDescricaoDelecao.Location = new Point(13, 324);
+            LabelTelaNotaDescricaoDelecao.MaximumSize = new Size(150, 0);
+            LabelTelaNotaDescricaoDelecao.AutoSize = true;
+            LabelTelaNotaDescricaoDelecao.Visible = true;
+            LabelTelaNotaTituloDelecao.Visible = true;
+
+        }
+
+        private void ButtonTelaNotaConfirmarDelecao_Click(object sender, EventArgs e) {
 
         }
     }

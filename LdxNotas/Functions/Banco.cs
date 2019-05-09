@@ -121,6 +121,16 @@ namespace LdxNotas.Functions {
             
         }
 
+        public void AlteraValorDaNotaForm(string codigoNota, string novoTitulo, string novaDescricao) {
+            Notas nota = new Notas();
+            string query = $"UPDATE TNOTAS SET DSTITU = '{novoTitulo}', DSNOTA = '{novaDescricao}', DTNOTA = '{nota.DataTexto()}'" +
+                $" WHERE CDNOTA = '{codigoNota}';";
+            operario = new SqlCeCommand(query, this.ConectarBanco());
+
+            operario.ExecuteNonQuery();
+
+        }
+
 
     }
 }

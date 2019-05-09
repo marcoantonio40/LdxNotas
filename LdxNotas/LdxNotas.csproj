@@ -64,10 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadastrarUsuario.cs">
+    <Compile Include="Formularios\CadastrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastrarUsuario.Designer.cs">
+    <Compile Include="Formularios\CadastrarUsuario.Designer.cs">
       <DependentUpon>CadastrarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Excecoes\DomainException.cs" />
@@ -77,16 +77,21 @@
     <Compile Include="Entidades\Notas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TelaLogin.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelaLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaLogin.Designer.cs">
+    <Compile Include="Formularios\TelaLogin.Designer.cs">
       <DependentUpon>TelaLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaNotas.cs">
+    <Compile Include="Formularios\TelaNotas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaNotas.Designer.cs">
+    <Compile Include="Formularios\TelaNotas.Designer.cs">
       <DependentUpon>TelaNotas.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -106,13 +111,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CadastrarUsuario.resx">
+    <EmbeddedResource Include="Formularios\CadastrarUsuario.resx">
       <DependentUpon>CadastrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaLogin.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\TelaLogin.resx">
       <DependentUpon>TelaLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaNotas.resx">
+    <EmbeddedResource Include="Formularios\TelaNotas.resx">
       <DependentUpon>TelaNotas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
