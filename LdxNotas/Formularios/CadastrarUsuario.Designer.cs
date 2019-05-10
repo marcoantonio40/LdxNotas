@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastrarUsuario));
             this.ButtonCadastrarRegistrar = new System.Windows.Forms.Button();
             this.TextBoxCadastrarUsuarioNome = new System.Windows.Forms.TextBox();
             this.TextBoxCadastrarUsuarioLogin = new System.Windows.Forms.TextBox();
@@ -40,7 +41,7 @@
             this.ButtonCadastrarRegistrar.Location = new System.Drawing.Point(18, 156);
             this.ButtonCadastrarRegistrar.Name = "ButtonCadastrarRegistrar";
             this.ButtonCadastrarRegistrar.Size = new System.Drawing.Size(85, 23);
-            this.ButtonCadastrarRegistrar.TabIndex = 0;
+            this.ButtonCadastrarRegistrar.TabIndex = 3;
             this.ButtonCadastrarRegistrar.Text = "CONFIRMAR";
             this.ButtonCadastrarRegistrar.UseVisualStyleBackColor = true;
             this.ButtonCadastrarRegistrar.Click += new System.EventHandler(this.ButtonCadastrarRegistrar_Click);
@@ -51,7 +52,7 @@
             this.TextBoxCadastrarUsuarioNome.MaxLength = 50;
             this.TextBoxCadastrarUsuarioNome.Name = "TextBoxCadastrarUsuarioNome";
             this.TextBoxCadastrarUsuarioNome.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxCadastrarUsuarioNome.TabIndex = 1;
+            this.TextBoxCadastrarUsuarioNome.TabIndex = 0;
             // 
             // TextBoxCadastrarUsuarioLogin
             // 
@@ -59,7 +60,7 @@
             this.TextBoxCadastrarUsuarioLogin.MaxLength = 50;
             this.TextBoxCadastrarUsuarioLogin.Name = "TextBoxCadastrarUsuarioLogin";
             this.TextBoxCadastrarUsuarioLogin.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxCadastrarUsuarioLogin.TabIndex = 2;
+            this.TextBoxCadastrarUsuarioLogin.TabIndex = 1;
             // 
             // TextBoxCadastrarUsuarioSenha
             // 
@@ -67,7 +68,7 @@
             this.TextBoxCadastrarUsuarioSenha.MaxLength = 50;
             this.TextBoxCadastrarUsuarioSenha.Name = "TextBoxCadastrarUsuarioSenha";
             this.TextBoxCadastrarUsuarioSenha.Size = new System.Drawing.Size(221, 20);
-            this.TextBoxCadastrarUsuarioSenha.TabIndex = 3;
+            this.TextBoxCadastrarUsuarioSenha.TabIndex = 2;
             // 
             // LabelCadastraUsuarioNome
             // 
@@ -101,7 +102,7 @@
             this.ButtonCadastrarVoltar.Location = new System.Drawing.Point(122, 156);
             this.ButtonCadastrarVoltar.Name = "ButtonCadastrarVoltar";
             this.ButtonCadastrarVoltar.Size = new System.Drawing.Size(78, 23);
-            this.ButtonCadastrarVoltar.TabIndex = 7;
+            this.ButtonCadastrarVoltar.TabIndex = 4;
             this.ButtonCadastrarVoltar.Text = "VOLTAR";
             this.ButtonCadastrarVoltar.UseVisualStyleBackColor = true;
             this.ButtonCadastrarVoltar.Click += new System.EventHandler(this.ButtonCadastrarVoltar_Click);
@@ -111,7 +112,7 @@
             this.ButtonCadastrarSair.Location = new System.Drawing.Point(218, 156);
             this.ButtonCadastrarSair.Name = "ButtonCadastrarSair";
             this.ButtonCadastrarSair.Size = new System.Drawing.Size(84, 23);
-            this.ButtonCadastrarSair.TabIndex = 8;
+            this.ButtonCadastrarSair.TabIndex = 5;
             this.ButtonCadastrarSair.Text = "SAIR";
             this.ButtonCadastrarSair.UseVisualStyleBackColor = true;
             this.ButtonCadastrarSair.Click += new System.EventHandler(this.ButtonCadastrarSair_Click);
@@ -140,10 +141,11 @@
             this.Controls.Add(this.TextBoxCadastrarUsuarioNome);
             this.Controls.Add(this.ButtonCadastrarRegistrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "CadastrarUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CadastrarUsuario";
+            this.Text = "LdxNotas - Cadastro";
             this.ResumeLayout(false);
             this.PerformLayout();
 

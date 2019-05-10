@@ -4,10 +4,15 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace LdxNotas.Functions {
+    /// <summary>
+    /// Classe criada para separar funções distintas do 
+    /// banco ou das Entidades
+    /// </summary>
     class Funcoes {
 
         public Funcoes() { }
 
+        //Método utilizado para criptografar a senha dos usuários na classe Usuarios e comparar senha na classe Banco
         public string Criptografa(string senha) {
             UnicodeEncoding encoding = new UnicodeEncoding();
             byte[] hashBytes;
@@ -22,6 +27,7 @@ namespace LdxNotas.Functions {
             return hashValue.ToString();
         }
 
+        //Método para verificar se um valor tem apenas números inteiros
         public bool IsNumeric(string codUsuario) {
             bool isnumeric = false;
             char[] datachars = codUsuario.ToCharArray();
@@ -33,6 +39,7 @@ namespace LdxNotas.Functions {
             return isnumeric;
         }
 
+        //Método usando para limpar todos os textBoxes
         public void LimparTextBoxes(Control.ControlCollection controles) {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controles) {
@@ -43,6 +50,7 @@ namespace LdxNotas.Functions {
             }
         }
 
+        //Método usando para limpar todos as Labels
         public void LimparLabels(Control.ControlCollection controles) {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controles) {
@@ -53,6 +61,7 @@ namespace LdxNotas.Functions {
             }
         }
 
+        //Método usando para limpar todos as Labels passada no argumento
         public void LimparLabels(Label titulo,Label descricao, Control.ControlCollection controles) {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controles) {
@@ -89,7 +98,7 @@ namespace LdxNotas.Functions {
             }
         }
 
-        public void MostarLabels(Label primeira, Label segunda, Label terceira, Label quarta, Control.ControlCollection controles) {
+        public void MostrarLabels(Label primeira, Label segunda, Label terceira, Label quarta, Control.ControlCollection controles) {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controles) {
 

@@ -115,7 +115,7 @@ namespace LdxNotas {
 
         private void ButtonTelaNotaDeletar_Click(object sender, EventArgs e) {
             funcao.AtivarBotoesTelaNota(ButtonTelaNotaConfirmarDelecao, ButtonTelaNotaCancelarDelecao, this.Controls);
-            funcao.MostarLabels(LabelTelaNotaTitulo, LabelTelaNotaDescricao, LabelTelaNotaDescricaoDelecao, LabelTelaNotaTituloDelecao,this.Controls);       
+            funcao.MostrarLabels(LabelTelaNotaTitulo, LabelTelaNotaDescricao, LabelTelaNotaDescricaoDelecao, LabelTelaNotaTituloDelecao,this.Controls);       
             LabelTelaNotaTituloDelecao.MaximumSize = new Size(150, 0);
             LabelTelaNotaTituloDelecao.AutoSize = true;
             LabelTelaNotaTituloDelecao.Location = new Point(13, 281);

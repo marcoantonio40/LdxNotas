@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaLogin));
             this.ButtonLogar = new System.Windows.Forms.Button();
             this.ButtonCadastrar = new System.Windows.Forms.Button();
             this.TetxBoxLogin = new System.Windows.Forms.TextBox();
@@ -38,7 +39,7 @@
             this.ButtonLogar.Location = new System.Drawing.Point(15, 101);
             this.ButtonLogar.Name = "ButtonLogar";
             this.ButtonLogar.Size = new System.Drawing.Size(111, 23);
-            this.ButtonLogar.TabIndex = 0;
+            this.ButtonLogar.TabIndex = 2;
             this.ButtonLogar.Text = "Entrar";
             this.ButtonLogar.UseVisualStyleBackColor = true;
             this.ButtonLogar.Click += new System.EventHandler(this.ButtonLogar_Click);
@@ -48,7 +49,7 @@
             this.ButtonCadastrar.Location = new System.Drawing.Point(161, 101);
             this.ButtonCadastrar.Name = "ButtonCadastrar";
             this.ButtonCadastrar.Size = new System.Drawing.Size(111, 23);
-            this.ButtonCadastrar.TabIndex = 1;
+            this.ButtonCadastrar.TabIndex = 3;
             this.ButtonCadastrar.Text = "Cadastrar Usuário";
             this.ButtonCadastrar.UseVisualStyleBackColor = true;
             this.ButtonCadastrar.Click += new System.EventHandler(this.ButtonCadastrar_Click);
@@ -58,14 +59,14 @@
             this.TetxBoxLogin.Location = new System.Drawing.Point(59, 12);
             this.TetxBoxLogin.Name = "TetxBoxLogin";
             this.TetxBoxLogin.Size = new System.Drawing.Size(213, 20);
-            this.TetxBoxLogin.TabIndex = 2;
+            this.TetxBoxLogin.TabIndex = 0;
             // 
             // TextBoxSenha
             // 
             this.TextBoxSenha.Location = new System.Drawing.Point(59, 58);
             this.TextBoxSenha.Name = "TextBoxSenha";
             this.TextBoxSenha.Size = new System.Drawing.Size(213, 20);
-            this.TextBoxSenha.TabIndex = 3;
+            this.TextBoxSenha.TabIndex = 1;
             // 
             // LabelLogin
             // 
@@ -90,7 +91,7 @@
             this.ButtonSair.Location = new System.Drawing.Point(15, 130);
             this.ButtonSair.Name = "ButtonSair";
             this.ButtonSair.Size = new System.Drawing.Size(257, 23);
-            this.ButtonSair.TabIndex = 6;
+            this.ButtonSair.TabIndex = 4;
             this.ButtonSair.Text = "SAIR";
             this.ButtonSair.UseVisualStyleBackColor = true;
             this.ButtonSair.Click += new System.EventHandler(this.ButtonSair_Click);
@@ -119,10 +120,11 @@
             this.Controls.Add(this.ButtonCadastrar);
             this.Controls.Add(this.ButtonLogar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "TelaLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaLogin";
+            this.Text = "LdxNotas - Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 
