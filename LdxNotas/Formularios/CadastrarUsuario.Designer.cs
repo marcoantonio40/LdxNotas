@@ -109,12 +109,13 @@
             // 
             // ButtonCadastrarSair
             // 
+            this.ButtonCadastrarSair.BackColor = System.Drawing.SystemColors.Control;
             this.ButtonCadastrarSair.Location = new System.Drawing.Point(218, 156);
             this.ButtonCadastrarSair.Name = "ButtonCadastrarSair";
             this.ButtonCadastrarSair.Size = new System.Drawing.Size(84, 23);
             this.ButtonCadastrarSair.TabIndex = 5;
             this.ButtonCadastrarSair.Text = "SAIR";
-            this.ButtonCadastrarSair.UseVisualStyleBackColor = true;
+            this.ButtonCadastrarSair.UseVisualStyleBackColor = false;
             this.ButtonCadastrarSair.Click += new System.EventHandler(this.ButtonCadastrarSair_Click);
             // 
             // LabelCadastraUsuarioStatus

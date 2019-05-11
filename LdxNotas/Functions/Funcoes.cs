@@ -72,6 +72,7 @@ namespace LdxNotas.Functions {
             }
         }
 
+        //Método para exibir os alguns botões e ocultar outros
         public void AtivarBotoesTelaNota(Button confimar, Button cancelar, Control.ControlCollection controles) {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controles) {
@@ -98,6 +99,7 @@ namespace LdxNotas.Functions {
             }
         }
 
+        //Método para motrars as Label
         public void MostrarLabels(Label primeira, Label segunda, Label terceira, Label quarta, Control.ControlCollection controles) {
             //Faz um laço para todos os controles passados no parâmetro
             foreach (Control ctrl in controles) {

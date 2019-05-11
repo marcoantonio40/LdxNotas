@@ -88,12 +88,13 @@
             // 
             // ButtonSair
             // 
+            this.ButtonSair.BackColor = System.Drawing.SystemColors.Control;
             this.ButtonSair.Location = new System.Drawing.Point(15, 130);
             this.ButtonSair.Name = "ButtonSair";
             this.ButtonSair.Size = new System.Drawing.Size(257, 23);
             this.ButtonSair.TabIndex = 4;
             this.ButtonSair.Text = "SAIR";
-            this.ButtonSair.UseVisualStyleBackColor = true;
+            this.ButtonSair.UseVisualStyleBackColor = false;
             this.ButtonSair.Click += new System.EventHandler(this.ButtonSair_Click);
             // 
             // label1

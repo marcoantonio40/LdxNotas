@@ -23,9 +23,9 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaNotas));
             this.ButtonTelaNotaCadastrar = new System.Windows.Forms.Button();
             this.ButtonTelaNotaEditar = new System.Windows.Forms.Button();
@@ -53,53 +53,58 @@
             // 
             // ButtonTelaNotaCadastrar
             // 
+            this.ButtonTelaNotaCadastrar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonTelaNotaCadastrar.Location = new System.Drawing.Point(512, 415);
             this.ButtonTelaNotaCadastrar.Name = "ButtonTelaNotaCadastrar";
             this.ButtonTelaNotaCadastrar.Size = new System.Drawing.Size(75, 23);
             this.ButtonTelaNotaCadastrar.TabIndex = 1;
             this.ButtonTelaNotaCadastrar.Text = "CADASTRAR";
-            this.ButtonTelaNotaCadastrar.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaCadastrar.UseVisualStyleBackColor = false;
             this.ButtonTelaNotaCadastrar.Click += new System.EventHandler(this.ButtonTelaNotaCadastrar_Click);
             // 
             // ButtonTelaNotaEditar
             // 
+            this.ButtonTelaNotaEditar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonTelaNotaEditar.Location = new System.Drawing.Point(593, 415);
             this.ButtonTelaNotaEditar.Name = "ButtonTelaNotaEditar";
             this.ButtonTelaNotaEditar.Size = new System.Drawing.Size(75, 23);
             this.ButtonTelaNotaEditar.TabIndex = 2;
             this.ButtonTelaNotaEditar.Text = "EDITAR";
-            this.ButtonTelaNotaEditar.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaEditar.UseVisualStyleBackColor = false;
             this.ButtonTelaNotaEditar.Click += new System.EventHandler(this.ButtonTelaNotaEditar_Click);
             // 
             // ButtonTelaNotaDeletar
             // 
+            this.ButtonTelaNotaDeletar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonTelaNotaDeletar.Location = new System.Drawing.Point(674, 415);
             this.ButtonTelaNotaDeletar.Name = "ButtonTelaNotaDeletar";
             this.ButtonTelaNotaDeletar.Size = new System.Drawing.Size(75, 23);
             this.ButtonTelaNotaDeletar.TabIndex = 3;
             this.ButtonTelaNotaDeletar.Text = "DELETAR";
-            this.ButtonTelaNotaDeletar.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaDeletar.UseVisualStyleBackColor = false;
             this.ButtonTelaNotaDeletar.Click += new System.EventHandler(this.ButtonTelaNotaDeletar_Click);
             // 
             // ButtonTelaNotaSair
             // 
+            this.ButtonTelaNotaSair.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonTelaNotaSair.Location = new System.Drawing.Point(755, 415);
             this.ButtonTelaNotaSair.Name = "ButtonTelaNotaSair";
             this.ButtonTelaNotaSair.Size = new System.Drawing.Size(75, 23);
             this.ButtonTelaNotaSair.TabIndex = 4;
             this.ButtonTelaNotaSair.Text = "SAIR";
-            this.ButtonTelaNotaSair.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaSair.UseVisualStyleBackColor = false;
             this.ButtonTelaNotaSair.Click += new System.EventHandler(this.ButtonTelaNotaSair_Click);
             // 
             // ButtonTelaNotaVisualizar
             // 
+            this.ButtonTelaNotaVisualizar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ButtonTelaNotaVisualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonTelaNotaVisualizar.Location = new System.Drawing.Point(431, 415);
             this.ButtonTelaNotaVisualizar.Name = "ButtonTelaNotaVisualizar";
             this.ButtonTelaNotaVisualizar.Size = new System.Drawing.Size(75, 23);
             this.ButtonTelaNotaVisualizar.TabIndex = 0;
             this.ButtonTelaNotaVisualizar.Text = "VISUALIZAR";
-            this.ButtonTelaNotaVisualizar.UseVisualStyleBackColor = true;
+            this.ButtonTelaNotaVisualizar.UseVisualStyleBackColor = false;
             this.ButtonTelaNotaVisualizar.Click += new System.EventHandler(this.ButtonTelaNotaVisualizar_Click);
             // 
             // LabelTelaNotaTitulo
@@ -180,34 +185,34 @@
             this.DataGridViewTelaNota.AllowUserToAddRows = false;
             this.DataGridViewTelaNota.AllowUserToDeleteRows = false;
             this.DataGridViewTelaNota.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTelaNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTelaNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.DataGridViewTelaNota.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTelaNota.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTelaNota.DefaultCellStyle = dataGridViewCellStyle14;
             this.DataGridViewTelaNota.Location = new System.Drawing.Point(273, 12);
             this.DataGridViewTelaNota.Name = "DataGridViewTelaNota";
             this.DataGridViewTelaNota.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTelaNota.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTelaNota.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.DataGridViewTelaNota.Size = new System.Drawing.Size(557, 381);
             this.DataGridViewTelaNota.TabIndex = 12;
             this.DataGridViewTelaNota.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTelaNota_CellDoubleClick);
